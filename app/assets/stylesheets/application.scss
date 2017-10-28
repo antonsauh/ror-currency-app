@@ -1,1 +1,27 @@
 @import "bootstrap";
+.invest-index-jumb-cont {
+    padding: 0px;
+}
+.invest-index-jumb {
+    background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.5)), asset-url('index-jumb-bg.jpeg');
+    background-image: -moz-linear-gradient(top, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.5)), asset-url('index-jumb-bg.jpeg');
+    background-image: -o-linear-gradient(top, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.5)), asset-url('index-jumb-bg.jpeg');
+    background-image: -ms-linear-gradient(top, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.5)), asset-url('index-jumb-bg.jpeg');
+    background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 0.8)), to(rgba(0, 0, 0, 0.5))), url("the-image.png");
+    background-image: -webkit-linear-gradient(top, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.5)), asset-url('index-jumb-bg.jpeg');
+    background-size: cover;
+    height: 92.5vh;
+    .container {
+        h1 {
+            color:lightgreen;
+        }
+        p {
+            color:lightgreen;
+        }
+    }
+}
+.navbar {
+    .navbar-brand {
+        color:lightgreen;
+    }
+}
