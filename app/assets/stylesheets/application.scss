@@ -1,4 +1,8 @@
 @import "bootstrap";
+
+.main-app-container {
+    padding: 0px;
+}
 .invest-index-jumb-cont {
     padding: 0px;
 }
@@ -10,7 +14,8 @@
     background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 0.8)), to(rgba(0, 0, 0, 0.5))), url("the-image.png");
     background-image: -webkit-linear-gradient(top, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.5)), asset-url('index-jumb-bg.jpeg');
     background-size: cover;
-    height: 92.5vh;
+    height: 100vh;
+    margin-bottom: 0px;
     .container {
         h1 {
             color:lightgreen;
@@ -24,4 +29,10 @@
     .navbar-brand {
         color:lightgreen;
     }
+}
+.new-calculation-form {
+    margin:20px;
+}
+.new-calculation-form-container {
+    margin-top: 25px;
 }
