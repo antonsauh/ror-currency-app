@@ -10,7 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171031165045) do
+ActiveRecord::Schema.define(version: 20171105143250) do
+
+  create_table "calculation_records", force: :cascade do |t|
+    t.integer "calculation_id"
+    t.date "date"
+    t.integer "rate"
+    t.integer "total"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["calculation_id"], name: "index_calculation_records_on_calculation_id"
+  end
 
   create_table "calculations", force: :cascade do |t|
     t.string "base_currency"
