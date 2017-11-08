@@ -1,4 +1,7 @@
 @import "bootstrap";
+$main-app-color: lightgreen;
+$secondary-app-color: #343a40;
+$bg-color: #F5F5F5;
 
 .main-app-container {
     padding: 0px;
@@ -18,16 +21,16 @@
     margin-bottom: 0px;
     .container {
         h1 {
-            color:lightgreen;
+            color: $main-app-color;
         }
         p {
-            color:lightgreen;
+            color: $main-app-color;
         }
     }
 }
 .navbar {
     .navbar-brand {
-        color:lightgreen;
+        color: $main-app-color;
     }
 }
 .new-calculation-form {
@@ -35,4 +38,27 @@
 }
 .new-calculation-form-container {
     margin-top: 25px;
+}
+.calculation-cards-container {
+    background-color: $bg-color;
+    padding-top: 2vh;
+    .row {
+        .calculation-card{
+            margin: 1vh 0px 1vh 0px;
+            border-color: $secondary-app-color;
+            .calculation-card-button-group{
+                .calculation-card-button{
+                    color: $bg-color;
+                }
+            }
+            .card-header {
+                background-color: $main-app-color;
+                font-size: 5vh;
+                color: $secondary-app-color;
+            }
+            .card-text {
+                color: $secondary-app-color;
+            }
+        }
+    }
 }

@@ -3,8 +3,8 @@ class CreateCalculationRecords < ActiveRecord::Migration[5.1]
     create_table :calculation_records do |t|
       t.references :calculation, index: true, foreign_key: true
       t.date :date
-      t.integer :rate
-      t.integer :total
+      t.float :rate
+      t.float :total
 
       t.timestamps
     end

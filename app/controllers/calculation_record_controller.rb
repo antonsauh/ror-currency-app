@@ -1,0 +1,2 @@
+class CalculationRecordController < ApplicationController
+end

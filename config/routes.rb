@@ -7,4 +7,6 @@ Rails.application.routes.draw do
   get 'users', to: 'users#show'
   post 'calculation/new', to: 'calculations#create'
   get 'calculation/new', to: 'calculations#new'
+  get 'calculations/:calculation_id', to: 'calculations#show'
+  get 'calculations', to: 'calculations#all'
 end

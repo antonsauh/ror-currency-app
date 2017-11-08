@@ -2,24 +2,39 @@ class CalculationGenerationService
 #  generates array with predicted rates and sums and also cleans up 
 #  the passed object to be ready for record creation process.
     def self.generateRecordsArray(todaysRates, array, amount, calculation_data)
-        rateSum = 0
-        iterations = 1
-        date = 
-        todayRate = todaysRates['rates']
         date = Date.parse(todaysRates['date']) + 7
+        arrayForCalculation = generate_and_return_array(array) << todaysRates['rates'].to_f
+        puts arrayForCalculation.length
+        i = 1
+        puts array.inspect
         array.each do | item |
-            rate = item['rates']
-            rateSum += rate
-            item['rate'] = (rate * (todayRate.to_f / (rateSum.to_f / iterations.to_f))).round(6)
+            item['rate'] = moving_average(arrayForCalculation, 26, 5)[0]
+            
+            puts i.to_s
+            puts item['rate']
+            arrayForCalculation = arrayForCalculation.slice(1..26)
+            arrayForCalculation << item['rate']
+
+            item['total'] = item['rate'] * amount
             item['date'] = date
-            item['total'] = (amount * item['rate']).round(2)
             item['calculation'] = calculation_data
-            iterations = iterations + 1
             date = date + 7
             item.delete("base")
             item.delete("rates")
+            i = i + 1
         end
-        return array
+            return array
     end
 
+    def self.moving_average(a,ndays,precision)
+        a.each_cons(ndays).map { |e| e.reduce(&:+).fdiv(ndays).round(precision) }
+    end
+
+    def self.generate_and_return_array(object)
+        my_array = []
+        object.each do | item |
+            my_array << item['rates'].to_f
+        end
+        return my_array
+    end
 end

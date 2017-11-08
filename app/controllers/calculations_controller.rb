@@ -2,6 +2,19 @@ class CalculationsController < ApplicationController
     def new
         @calculation = Calculation.new
     end
+    def all
+        @user = current_user
+        @calculations = @user.calculations.all
+    end
+    def show
+        @user = current_user
+        if @user.calculations.find_by(id: params['calculation_id'])
+            @calculation = @user.calculations.find_by(id: params['calculation_id'])
+        else
+            flash[:notice] = "You do not have this calculation!"
+            redirect_to root_path
+        end
+    end
     def create
         params = calculation_params
         params['user'] = current_user

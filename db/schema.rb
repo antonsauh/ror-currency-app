@@ -12,6 +12,8 @@
 
 ActiveRecord::Schema.define(version: 20171105143250) do
 
+  #  TODO:  PEREDELATJ RATE I TOTAL NA FLOAT!
+
   create_table "calculation_records", force: :cascade do |t|
     t.integer "calculation_id"
     t.date "date"

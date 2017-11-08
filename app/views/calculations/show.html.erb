@@ -1,0 +1,3 @@
+<h1> <%= @calculation['id'] %> </h2>
+<%= line_chart @calculation.calculation_records.pluck(:date, :total) %>
+<%= @calculation.calculation_records.pluck(:date, :total) %>

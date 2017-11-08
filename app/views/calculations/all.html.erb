@@ -1,0 +1,30 @@
+<div class="container-fluid calculation-cards-container">
+    <div class = "row">
+        <% if @calculations %>
+            <% @calculations.each do | calculation |%>
+                <div class="col-lg-4">
+                    <div class="card calculation-card">
+                        <div class="card-header text-center"><%= calculation['date'] %></div>
+                        <div class="card-body text-center">
+                            <p class="card-text">Calculating <%= calculation['base_amount']%> <%= calculation['base_currency']  %>
+                            into <%= calculation['target_currency']%>
+                            </p>
+                            <div class="row">
+                                <div class="col-lg-12 text-center">
+                                    <div class="btn-group calculation-card-button-group" role="group" aria-label="Basic example">
+                                        <%= link_to ('View'),
+                                        'calculations/' + calculation['id'].to_s, title: 'View', class: 'btn btn-lg btn-success calculation-card-button' %>
+                                        <a class="btn btn-lg btn-info calculation-card-button">Update</a>
+                                        <a class="btn btn-lg btn-danger calculation-card-button">Delete</a>
+                                    </div>
+                                </div>
+                            </div>                               
+                        </div>
+                    </div>
+                </div>
+            <% end %>
+        <% else %>
+            <h3>You do not have any calculations at the moment</h3>
+        <% end %>
+    </div>
+</div>
