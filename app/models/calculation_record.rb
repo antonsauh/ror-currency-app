@@ -1,5 +1,5 @@
 class CalculationRecord < ApplicationRecord
-    belongs_to :calculation, dependent: :delete
+    belongs_to :calculation, dependent: :delete_all
     validates :date, presence: true
     validates :rate, presence: true
     validates_associated :calculation

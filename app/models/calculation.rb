@@ -7,6 +7,6 @@ class Calculation < ApplicationRecord
     validates :date, presence: true
     validates :base_currency, presence: true
     validates_associated :user
-    has_many :calculation_records, dependent: :delete
+    has_many :calculation_records, dependent: :delete_all
 
 end
