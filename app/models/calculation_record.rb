@@ -1,9 +1,8 @@
 class CalculationRecord < ApplicationRecord
-    belongs_to :calculation
+    belongs_to :calculation, dependent: :delete
     validates :date, presence: true
     validates :rate, presence: true
     validates_associated :calculation
-    dependent: :destroy
 
     def self.SaveRecordsForCalculation(todaysRate, infoFromDb, base_amount, calculation)
         records = CalculationGenerationService.generateRecordsArray(todaysRate, infoFromDb, base_amount, calculation)
