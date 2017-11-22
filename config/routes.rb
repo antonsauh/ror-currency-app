@@ -9,4 +9,7 @@ Rails.application.routes.draw do
   get 'calculation/new', to: 'calculations#new'
   get 'calculations/:calculation_id', to: 'calculations#show'
   get 'calculations', to: 'calculations#all'
+  get 'calculations/:calculation_id/edit', to: 'calculations#edit'
+  patch 'calculations/:calculation_id/update', to: 'calculations#update'
+  delete 'calculations/:calculation_id', to: 'calculations#delete'
 end

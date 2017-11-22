@@ -1,3 +1,90 @@
-<h1> <%= @calculation['id'] %> </h2>
-<%= line_chart @calculation.calculation_records.pluck(:date, :total) %>
-<%= @calculation.calculation_records.pluck(:date, :total) %>
+<div class="container-fluid text-center">
+    <div class="row" style="margin: 3vh">
+        <div class="col-lg-12">
+            <h1>Calculation Chart</h1>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-10 offset-1">
+            <%= column_chart @calculation.calculation_records.limit(@calculation.period).pluck(:date, :rate), min: @calculation.calculation_records.minimum(:rate) * 0.99, max: @calculation.calculation_records.maximum(:rate) %>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-12 text-center">
+            <h1>Top 3 Predictions</h1>
+        </div>
+        <div class="col-lg-10 offset-1">
+            <table class="table">
+                <thead>
+                    <tr>
+                    <th scole="col">Rank</th>
+                    <th scope="col">Year-week</th>
+                    <th scope="col">Rate</th>
+                    <th scope="col">Sum</th>
+                    <th scope="col">Profit/Loss</th>
+                    </tr>
+                </thead>
+                <tbody>
+                <% @top_three.each do | record | %>
+                    <tr>
+                    <th scope="row"><%= @top_three.index(record) + 1 %></th>
+                    <td><%= "#{record.date.year}-#{record.date.strftime("%W")}" %></td>
+                    <td><%= record.rate %></td>
+                    <td><%= record.total.round(2) %></td>
+                    <td><%= (record.rate - @calculation.rate).round(6)%></td>
+                    </tr>
+                <% end %>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="row">
+        <!-- Button trigger modal -->
+        <div class="col-lg-1 offset-5" style="margin-bottom: 3vh;">
+            <button type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModalLong">
+                Show Full Table
+            </button>
+        </div>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Full Calculation Table</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">Year-week</th>
+                    <th scope="col">Rate</th>
+                    <th scope="col">Sum</th>
+                    <th scope="col">Profit/Loss</th>
+                </tr>
+            </thead>
+            <tbody>
+            <% @calculation.calculation_records.limit(@calculation.period).each do | record | %>
+                <tr>
+                    <td><%= "#{record.date.year}-#{record.date.strftime("%W")}" %></td>
+                    <td><%= record.rate %></td>
+                    <td><%= record.total.round(2) %></td>
+                    <td><%= (record.rate - @calculation.rate).round(6)%></td>
+                </tr>
+            <% end %>
+            </tbody>
+        </table>       
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+    </div>
+</div>
+
+

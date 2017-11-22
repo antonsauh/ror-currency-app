@@ -8,14 +8,16 @@ class CalculationRecord < ApplicationRecord
         records = CalculationGenerationService.generateRecordsArray(todaysRate, infoFromDb, base_amount, calculation)
         records.each do |record|
             if CalculationRecord.create(record)
+
                 else
-                    @calculation.CalculationRecords.destroy()
                     @calculation.destroy()
                     flash[:notice] = "Cannot Save Record to Db: " + record
-                    redirect_to calculation_new_path
+                    return false
                     break
+
                 end
-            end
+        end
+        
     end
 
 end

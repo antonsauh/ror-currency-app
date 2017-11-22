@@ -1,0 +1,21 @@
+<?xml version="1.0"?><svg width="147.089" height="147.089" xmlns="http://www.w3.org/2000/svg">
+ <title>BLUE-SAD-FACE</title>
+ <metadata id="metadata7">image/svg+xml</metadata>
+ <defs>
+  <clipPath clipPathUnits="userSpaceOnUse" id="clipPath2440">
+   <path d="m114.666,142.227005c0,12.529999 -9.304001,22.69899 -20.767601,22.69899c-11.463799,0 -20.7677,-10.168991 -20.7677,-22.69899c0,-12.529999 9.303902,-22.699005 20.7677,-22.699005c11.4636,0 20.767601,10.169006 20.767601,22.699005z" stroke-width="4" stroke-miterlimit="4" stroke-linejoin="round" stroke-linecap="round" stroke-dashoffset="0" marker-start="none" marker-mid="none" marker-end="none" fill-rule="nonzero" fill="#ffcc00" id="path2442"/>
+  </clipPath>
+  <clipPath clipPathUnits="userSpaceOnUse" id="clipPath2504">
+   <path d="m115.667,150.100006a20.7677,22.698999 0 1 1 -41.535599,0a20.7677,22.698999 0 1 1 41.535599,0z" stroke-width="4" stroke-miterlimit="4" stroke-linejoin="round" stroke-linecap="round" stroke-dashoffset="0" marker-start="none" marker-mid="none" marker-end="none" fill-rule="nonzero" fill="#808080" opacity="0.71" id="path2506"/>
+  </clipPath>
+ </defs>
+ <g>
+  <title>Layer 1</title>
+  <g id="g3528">
+   <path d="m145.589996,73.544601a72.044601,72.044601 0 1 1 -144.089586,0a72.044601,72.044601 0 1 1 144.089586,0z" stroke-width="6" stroke-miterlimit="4" stroke-linejoin="round" stroke-linecap="round" stroke-dashoffset="0" stroke="#000000" marker-start="none" marker-mid="none" marker-end="none" fill-rule="nonzero" fill="#5193d6" id="path2302"/>
+   <path d="m27.809601,114.360001c32.343498,-26.337997 62.649696,-28.086998 90.484398,0" stroke-width="6" stroke="#000000" fill-rule="evenodd" fill="#5193d6" id="path2304"/>
+   <path d="m51.833,48.8848a5.92148,5.92148 0 1 1 -11.842999,0a5.92148,5.92148 0 1 1 11.842999,0z" stroke-width="6" stroke-miterlimit="4" stroke-linejoin="round" stroke-linecap="round" stroke-dashoffset="0" stroke="#000000" marker-start="none" marker-mid="none" marker-end="none" fill-rule="nonzero" fill="#5193d6" id="path2306"/>
+   <path d="m101.833,48.8848a5.92148,5.92148 0 1 1 -11.843002,0a5.92148,5.92148 0 1 1 11.843002,0z" stroke-width="6" stroke-miterlimit="4" stroke-linejoin="round" stroke-linecap="round" stroke-dashoffset="0" stroke="#000000" marker-start="none" marker-mid="none" marker-end="none" fill-rule="nonzero" fill="#5193d6" id="path2308"/>
+  </g>
+ </g>
+</svg>

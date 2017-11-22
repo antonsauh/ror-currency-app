@@ -2,6 +2,9 @@
 $main-app-color: lightgreen;
 $secondary-app-color: #343a40;
 $bg-color: #F5F5F5;
+body {
+    background-color: $bg-color;
+}
 
 .main-app-container {
     padding: 0px;
@@ -62,3 +65,60 @@ $bg-color: #F5F5F5;
         }
     }
 }
+.signup-container {
+    margin-top:3vh;
+    .signup-form {
+    margin-top: 3vh;
+        .signup-submit-button {
+            margin-top: 1vh;
+        }
+    }
+}
+.login-container {
+    margin-top:3vh;
+    .login-form {
+        margin-top: 3vh;
+    }
+}
+.edit-user-container {
+    margin-top:3vh;
+    .edit-user-form {
+        margin-top:3vh;
+        .btn-primary {
+            margin-top: 1vh;
+            margin-bottom: 1vh;
+        }
+    }
+}
+/*flash*/
+.alert-error {
+    background-color: #f2dede;
+    border-color: #eed3d7;
+    color: #b94a48;
+    text-align: left;
+    margin-bottom:0px;
+ }
+
+.alert-alert {
+    background-color: #f2dede;
+    border-color: #eed3d7;
+    color: #b94a48;
+    text-align: left;
+    margin-bottom:0px;
+ }
+
+.alert-success {
+    background-color: #dff0d8;
+    border-color: #d6e9c6;
+    color: #468847;
+    text-align: left;
+    margin-bottom:0px;
+ }
+
+.alert-notice {
+    background-color: #dff0d8;
+    border-color: #d6e9c6;
+    color: #468847;
+    text-align: left;
+    margin-bottom:0px;
+ }

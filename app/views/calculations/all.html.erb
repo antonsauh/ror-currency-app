@@ -1,6 +1,6 @@
 <div class="container-fluid calculation-cards-container">
     <div class = "row">
-        <% if @calculations %>
+        <% if @calculations.length > 0 %>
             <% @calculations.each do | calculation |%>
                 <div class="col-lg-4">
                     <div class="card calculation-card">
@@ -14,8 +14,10 @@
                                     <div class="btn-group calculation-card-button-group" role="group" aria-label="Basic example">
                                         <%= link_to ('View'),
                                         'calculations/' + calculation['id'].to_s, title: 'View', class: 'btn btn-lg btn-success calculation-card-button' %>
-                                        <a class="btn btn-lg btn-info calculation-card-button">Update</a>
-                                        <a class="btn btn-lg btn-danger calculation-card-button">Delete</a>
+                                        <%= link_to ('Edit'),
+                                        'calculations/' + calculation['id'].to_s + "/edit", title: 'Edit', class: 'btn btn-lg btn-info calculation-card-button' %>
+                                        <%= link_to ('Delete'),
+                                        'calculations/' + calculation['id'].to_s, title: 'Delete', class: 'btn btn-lg btn-danger calculation-card-button', :method => :delete %>
                                     </div>
                                 </div>
                             </div>                               
@@ -24,7 +26,14 @@
                 </div>
             <% end %>
         <% else %>
-            <h3>You do not have any calculations at the moment</h3>
+            <div class="col-lg-11 text-center">
+                <h3>You do not have any calculations at the moment.</h3>
+                <h3>Click the "New Calculation" button to create one!</h3>
+
+            </div>
+            <div class="col-lg-11 text-center">
+                <%= image_tag("sad-face-blue-two", :alt => "rss feed", class: "img-responsive") %>
+            </div>
         <% end %>
     </div>
 </div>
