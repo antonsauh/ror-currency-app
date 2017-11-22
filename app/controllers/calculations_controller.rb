@@ -24,18 +24,13 @@ class CalculationsController < ApplicationController
 
     def delete
         @calculation = Calculation.find(params[:calculation_id])
-        if @calculation.CalculationRecords.delete
-            if @calculation.delete
+            if @calculation.destroy
                     flash[:success] = "Calculation Deleted!"
                     redirect_to calculations_path
             else
                 flash[:alert] = "There was a problem with deleting your calclation, please try again"              
                 redirect_to calculations_path
             end
-        else
-                flash[:alert] = "There was a problem with deleting your calclation, please try again"              
-                redirect_to calculations_path
-        end
 
     end
 
