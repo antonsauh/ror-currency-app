@@ -5,6 +5,7 @@ class User < ApplicationRecord
   has_many :calculations, dependent: :destroy
   attr_accessor :login
   validates_format_of :username, with: /^[a-zA-Z0-9_\.]*$/, :multiline => true
+  validates :username, :presence => true, :uniqueness => true
 
   def self.find_for_database_authentication(warden_conditions)
       conditions = warden_conditions.dup
