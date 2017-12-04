@@ -3,7 +3,6 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
   root 'welcome#index'
-  get 'new', to: 'welcome#new'
   get 'users', to: 'users#show'
   post 'calculation/new', to: 'calculations#create'
   get 'calculation/new', to: 'calculations#new'
