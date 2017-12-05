@@ -4,17 +4,11 @@ class CalculationGenerationService
     def self.generateRecordsArray(todaysRates, array, amount, calculation_data)
         date = Date.parse(todaysRates['date']) + 7
         arrayForCalculation = generate_and_return_array(array) << todaysRates['rates'].to_f
-        puts arrayForCalculation.length
         i = 1
-        puts array.inspect
         array.each do | item |
             item['rate'] = moving_average(arrayForCalculation, 26, 5)[0]
-            
-            puts i.to_s
-            puts item['rate']
             arrayForCalculation = arrayForCalculation.slice(1..26)
             arrayForCalculation << item['rate']
-
             item['total'] = item['rate'] * amount
             item['date'] = date
             item['calculation'] = calculation_data

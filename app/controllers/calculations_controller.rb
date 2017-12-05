@@ -20,12 +20,18 @@ class CalculationsController < ApplicationController
 
     def update
         @calculation = Calculation.find(params[:calculation_id])
-            if @calculation.update(calculation_params)
-                flash[:success] = "Calculation Updated"
-                redirect_to calculations_path
+            if calculation_params['base_currency'] != calculation_params['target_currency']
+                if @calculation.update(calculation_params)
+                    flash[:success] = "Calculation Updated"
+                    redirect_to calculations_path
+                else
+                render 'edit'
+                end
             else
-               render 'edit'
+                flash[:danger] = "Base And Target Currencies Cannot Equal"
+                render 'edit'
             end
+
     end
 
     def delete
