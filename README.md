@@ -9,5 +9,9 @@
  ### Tests
  Testing has been done using Rspec
  To run the testing suite do "rspec" in the console
+ Total code coverage about 78% all essential parts of application 100%
+ ### Static Code Analysis
+ To run static code analysis run rubocop
+ View rubocop settings in .rubocop.yml
  ### Availability
  Project is available on heroku https://shrouded-tor-80005.herokuapp.com/
