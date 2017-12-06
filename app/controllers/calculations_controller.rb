@@ -1,3 +1,4 @@
+# Controller for Calculations
 class CalculationsController < ApplicationController
   def new
     @calculation = Calculation.new
@@ -32,11 +33,11 @@ class CalculationsController < ApplicationController
     @calculation = Calculation.find(params[:calculation_id])
     if @calculation.destroy
       flash[:success] = 'Calculation Deleted!'
-      redirect_to calculations_path
     else
-      flash[:alert] = 'There was a problem with deleting your calclation, please try again'
-      redirect_to calculations_path
+      flash[:alert] = 'There was a problem with deleting your calclation,
+       please try again'
     end
+    redirect_to calculations_path
   end
 
   def show
@@ -61,15 +62,15 @@ class CalculationsController < ApplicationController
       flash[:alert] = 'Base And Target currencies cannot be the same'
       redirect_to calculation_new_path
     else
-      infoFromDb = ApiService.getRates(params['base_currency'], params['target_currency'])
-      if infoFromDb != 'ERROR'
-        todaysRate = infoFromDb[0]
-        infoFromDb.delete_at(0)
-        params['date'] = Date.parse(todaysRate['date'])
-        params['rate'] = todaysRate['rates']
+      info_from_db = ApiService.get_rates(params['base_currency'], params['target_currency'])
+      if info_from_db != 'ERROR'
+        todays_rate = info_from_db[0]
+        info_from_db.delete_at(0)
+        params['date'] = Date.parse(todays_rate['date'])
+        params['rate'] = todays_rate['rates']
         @calculation = Calculation.new(params)
         if @calculation.save
-          if CalculationRecord.SaveRecordsForCalculation(todaysRate, infoFromDb, params['base_amount'].to_f, @calculation)
+          if CalculationRecord.save_records_for_calculation(todays_rate, info_from_db, params['base_amount'].to_f, @calculation)
             redirect_to calculations_path
           else
             flash[:alert] = 'There was a problem with your calculation, please try again. Cannot save Calculation to Database.'

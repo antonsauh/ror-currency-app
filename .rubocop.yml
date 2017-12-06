@@ -1,0 +1,27 @@
+AllCops:
+  Exclude:
+    - 'db/**/*'
+
+Metrics/LineLength:
+  Max: 150
+
+MethodLength:
+  Enabled: false
+
+Metrics/AbcSize:
+   Enabled: false
+
+BlockLength:
+  Enabled: false
+
+Style/FrozenStringLiteralComment:
+  Enabled: false
+
+Metrics/LineLength:
+  Enabled: false
+
+Metrics/PerceivedComplexity:
+  Max: 10
+
+Metrics/BlockNesting:
+  Max: 5

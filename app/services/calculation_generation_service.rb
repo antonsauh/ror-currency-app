@@ -2,14 +2,14 @@
 class CalculationGenerationService
   #  generates array with predicted rates and sums and also cleans up.
   #  the passed object to be ready for record creation process.
-  def self.generateRecordsArray(todaysRates, array, amount, calculation_data)
-    date = Date.parse(todaysRates['date']) + 7
-    arrayForCalculation = generate_and_return_array(array) << todaysRates['rates'].to_f
+  def self.generate_records_array(todays_rates, array, amount, calculation_data)
+    date = Date.parse(todays_rates['date']) + 7
+    array_for_calculation = generate_and_return_array(array) << todays_rates['rates'].to_f
     i = 1
     array.each do |item|
-      item['rate'] = moving_average(arrayForCalculation, 26, 5)[0]
-      arrayForCalculation = arrayForCalculation.slice(1..26)
-      arrayForCalculation << item['rate']
+      item['rate'] = moving_average(array_for_calculation, 26, 5)[0]
+      array_for_calculation = array_for_calculation.slice(1..26)
+      array_for_calculation << item['rate']
       item['total'] = item['rate'] * amount
       item['date'] = date
       item['calculation'] = calculation_data

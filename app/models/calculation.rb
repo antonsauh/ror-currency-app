@@ -1,3 +1,4 @@
+# Calculation Model
 class Calculation < ApplicationRecord
   belongs_to :user
   validates :base_currency, presence: true

@@ -89,9 +89,9 @@ RSpec.describe CalculationsController, type: :controller do
                                           'base_amount' => 2500, 'date' => '01-01-2017')
         expect do
           delete :delete, params: { 'calculation_id' => @calculation.id }
-        end.to change {
-          Calculation.count
-        }
+          # rubocop:disable Lint/ParenthesesAsGroupedExpression
+        end.to (change { Calculation.count })
+        # rubocop:enable Lint/ParenthesesAsGroupedExpression
       end
       it 'should redirect to /all after deletion' do
         @user = subject.current_user

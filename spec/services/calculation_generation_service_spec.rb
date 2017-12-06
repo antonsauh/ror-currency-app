@@ -31,7 +31,7 @@ describe CalculationGenerationService do
   @user = FactoryBot.create(:user)
   context 'self.generateRecordsArray' do
     it 'should generate records array from given arguments' do
-      result = CalculationGenerationService.generateRecordsArray(
+      result = CalculationGenerationService.generate_records_array(
         todays_rates,
         api_response,
         amount,
