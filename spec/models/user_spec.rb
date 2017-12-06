@@ -1,20 +1,19 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
-    it 'has a valid factoryBot object' do
-      expect(FactoryBot.build(:user)).to be_valid
-    end
+  it 'has a valid factoryBot object' do
+    expect(FactoryBot.build(:user)).to be_valid
+  end
 
-    it 'has many calculations' do
-        should have_many(:calculations)
-    end
+  it 'has many calculations' do
+    should have_many(:calculations)
+  end
 
   before :each do
     @user = FactoryBot.build(:user)
   end
 
   context 'it validates the credentials' do
-
     it 'should not be valid without an email' do
       @user.email = nil
       expect(@user).to_not be_valid
@@ -29,7 +28,6 @@ RSpec.describe User, type: :model do
       @user.password = nil
       expect(@user).to_not be_valid
     end
-
   end
 
   context 'When a new User is initialized' do

@@ -1,7 +1,6 @@
 class CreateCalculations < ActiveRecord::Migration[5.1]
   def change
     create_table :calculations do |t|
-
       t.string :base_currency
       t.string :target_currency
       t.integer :period
