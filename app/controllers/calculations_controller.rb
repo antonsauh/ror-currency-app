@@ -74,7 +74,7 @@ class CalculationsController < ApplicationController
                 params['date'] = Date.parse(todaysRate['date'])
                 params['rate'] = todaysRate['rates']
                 @calculation = Calculation.new(params)
-                if @calculation.save()
+                if @calculation.save
                     if CalculationRecord.SaveRecordsForCalculation(todaysRate, infoFromDb, params['base_amount'].to_f, @calculation)
                         redirect_to calculations_path
                         else

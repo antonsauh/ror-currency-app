@@ -1,8 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe CalculationsController, type: :controller do
-    describe 'GET /new' do
-        it 'should redirect unauthorized user to login path' do
+  describe 'GET /new' do
+      it 'should redirect unauthorized user to login path' do
             get :new
             expect(response).to redirect_to(new_user_session_path)
         end
@@ -33,7 +33,6 @@ RSpec.describe CalculationsController, type: :controller do
     end
 
     describe 'GET /edit' do
-
         it 'should redirect unathorized user to login path' do
             get :edit, params: {'calculation_id' => 1}
             expect(response).to redirect_to(new_user_session_path)
@@ -61,7 +60,7 @@ RSpec.describe CalculationsController, type: :controller do
     describe 'PATCH /update' do
         let(:calc_params) do
                 {
-                :base_currency => 'USD',
+                base_currency: 'USD',
                 :target_currency => 'EUR',
                 :period => 2,
                 :base_amount => 2500,
@@ -117,13 +116,13 @@ RSpec.describe CalculationsController, type: :controller do
             end
             it 'should redirect to /all after deletion' do
                 @user = subject.current_user
-                @calculation = Calculation.create({'base_currency' => 'USD', 'target_currency' => 'EUR', 'user' => @user, 'period' => 1,
-                    'base_amount' => 2500, 'date' => '01-01-2017' })
-                calc_cnt = Calculation.count
-                delete :delete, params: {'calculation_id' => @calculation.id}
+                @calculation = Calculation.create('base_currency' => 'USD',
+                    'target_currency' => 'EUR',
+                    'user' => @user, 'period' => 1,
+                    'base_amount' => 2500, 'date' => '01-01-2017')
+                delete :delete, params: { 'calculation_id' => @calculation.id }
                 expect(response).to redirect_to(calculations_path)
                 expect(flash[:success]).to be_present
-
             end
         end
     end
@@ -163,16 +162,36 @@ RSpec.describe CalculationsController, type: :controller do
                 }
             }
         end
+        let(:wrong_calc_params) do
+            { calculation:   
+                {
+                :base_currency => 'USD',
+                :target_currency => 'USD',
+                :period => 2,
+                :base_amount => 2500,
+                :date => '01-01-2017',
+                :user_id => @user.id
+                }
+            }
+        end
         context 'logged in user' do
             login_user
             it 'should create new calculation with records' do
                 @user = subject.current_user
+                clc_cnt = @user.calculations.count
                 post :create, params: calc_params
                 expect(response).to redirect_to (calculations_path)
+                expect(clc_cnt).not_to eql(@user.calculations.count)
+                expect(@user.calculations.last.calculation_records).to exist
 
             end
             it 'should not create new calculation if base_currency and target_currency are equal' do
-
+                @user = subject.current_user
+                clc_cnt = @user.calculations.count
+                post :create, params: wrong_calc_params
+                expect(response).to redirect_to (calculation_new_path)
+                expect(clc_cnt).to eql(@user.calculations.count)
+                expect(flash[:alert]).to be_present
             end
         end
     end
