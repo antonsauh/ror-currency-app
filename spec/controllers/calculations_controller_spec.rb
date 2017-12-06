@@ -68,16 +68,6 @@ RSpec.describe CalculationsController, type: :controller do
                 :user_id => @user.id
                 }
         end
-        let(:wrong_calc_params) do
-                {
-                :base_currency => 'USD',
-                :target_currency => 'USD',
-                :period => 1,
-                :base_amount => 2500,
-                :date => '01-01-2017',
-                :user_id => @user.id
-                }
-        end
         context 'logged in user' do
             login_user
             it 'should update the calculation' do
@@ -88,16 +78,6 @@ RSpec.describe CalculationsController, type: :controller do
                 @calculation.reload
                 expect(@calculation.period).to eql calc_params[:period]
                 expect(response).to redirect_to(calculations_path)
-            end
-            it 'should not update the calculation and show flash error message' do
-                @user = subject.current_user
-                @calculation = Calculation.create({'base_currency' => 'USD', 'target_currency' => 'EUR', 'user' => @user, 'period' => 1,
-                 'base_amount' => 2500, 'date' => '01-01-2017' })
-                patch :update, params: {'calculation_id' => @calculation.id, 'calculation' => wrong_calc_params}
-                @calculation.reload
-                expect(@calculation.period).not_to eql calc_params[:period]
-                expect(response).to render_template('edit')
-                expect(flash[:danger]).to be_present
             end
         end
     end
